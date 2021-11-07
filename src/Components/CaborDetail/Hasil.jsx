@@ -5,15 +5,10 @@ import { db } from "../../data/db";
 const Hasil = (props) => {
     const [visiblePopup, setVisiblePopup] = useState(false)
     const [standingsRef, setStandingsRef] = useState([]);
-    let filter = props.filter    
-
-    const filterlib = ["badminton", "badminton", "sepak", "panahan", "esport", "judo", "karate",
-                        "taekwondo", "silat", "catur", "panjat", "bridge", "puisi", "monolog",
-                        "band", "lukis", "makeup", "keroncong", "vocal", "naskah", "foto",
-                        "tari"]
+    let filter = props.id    
     
     useEffect(() => {
-        const medalsData = db.collection("standings/" + filterlib[Number(props.filter)] + "/cabang").orderBy("name").onSnapshot((snap) => {
+        const medalsData = db.collection("standings/" + props.id + "/cabang").orderBy("name").onSnapshot((snap) => {
           let data = snap.docs.map((doc) => doc.data());
           setStandingsRef(data);
           return medalsData();     
@@ -27,17 +22,10 @@ const Hasil = (props) => {
 
     return (
         <div className = 'relative z-50'>
-            <p className = 'text-center'>
+            <p className = 'text-center font-sansPro'>
               <button onClick={() => setVisiblePopup(!visiblePopup)} 
-                className='rounded-xl border-2 p-2 bg-merah text-kuning text-2xl transform scale-50 md:scale-100 transition duration-300 md:hover:scale-105'
-                style={{
-                textShadow: [
-                    "1.5px 1.5px 0 #000",
-                    "1.5px -1.5px 0 #000",
-                    "-1.5px 1.5px 0 #000",
-                    "-1.5px -1.5px 0 #000",
-                ],
-                }}>Detail Hasil</button> 
+                className='rounded-xl p-2 border-2 bg-biru text-white text-2xl transform scale-50 md:scale-100 transition duration-300 md:hover:scale-105'
+                >Detail Hasil</button> 
             </p>
             {visiblePopup ? 
              <div className='fixed top-0 left-0 flex items-center justify-center' style={{

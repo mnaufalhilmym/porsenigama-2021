@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { db } from "../data/db";
+import { Hasil } from '../Components/CaborDetail'
 const assetsCaborDetail = `${process.env.PUBLIC_URL}/images/CaborDetail`;
 
 const Card = (props) => {
@@ -89,6 +90,10 @@ const CaborDetail = (props) => {
   const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
+    console.log(id)
+  }, [])
+
+  useEffect(() => {
     const getData = async () => {
       const headerData = (
         await db.collection("dataCabor").doc(id).get()
@@ -154,52 +159,55 @@ const CaborDetail = (props) => {
         alt=""
       />
       <div className="flex flex-col justify-center md:px-20 pt-8">
-        {selectedCategory && (
-          <div
-            className={`z-10 relative bg-white sm:min-w-max sm:w-1/3 ${
-              showCategory
-                ? "rounded-t-3xl"
-                : "bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-3xl"
-            } py-3 lg:text-xl xl:text-2xl`}
-            style={{
-              boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)",
-            }}
-          >
+        <div className='flex flex-row items-center justify-between'>
+          {selectedCategory && (
             <div
-              className="flex justify-between cursor-pointer"
-              onClick={() => setShowCategory((prevState) => !prevState)}
+              className={`z-10 relative bg-white sm:min-w-max sm:w-1/3 ${
+                showCategory
+                  ? "rounded-t-3xl"
+                  : "bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-3xl"
+              } py-3 lg:text-xl xl:text-2xl`}
+              style={{
+                boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)",
+              }}
             >
-              <p className="px-6 py-3 opacity-50">{selectedCategory}</p>
-              <div className="flex justify-center px-4 border-l border-black border-opacity-60">
-                <img
-                  className={`py-3 ${
-                    showCategory ? "transition transform rotate-180" : ""
-                  }`}
-                  style={{ width: "60%" }}
-                  src={`${assetsCaborDetail}/dropdown.svg`}
-                  alt=""
-                />
-              </div>
-            </div>
-            {showCategory && (
               <div
-                className="absolute w-full bg-white rounded-b-3xl mt-3 pb-3"
-                style={{ boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                className="flex justify-between cursor-pointer"
+                onClick={() => setShowCategory((prevState) => !prevState)}
               >
-                {caborData.length &&
-                  caborData.map((data) => (
-                    <p
-                      key={data.category}
-                      className="px-6 py-3 opacity-50 cursor-pointer"
-                      onClick={() => selectCategoryHandler(data.category)}
-                    >
-                      {data.category}
-                    </p>
-                  ))}
+                <p className="px-6 py-3 opacity-50">{selectedCategory}</p>
+                <div className="flex justify-center px-4 border-l border-black border-opacity-60">
+                  <img
+                    className={`py-3 ${
+                      showCategory ? "transition transform rotate-180" : ""
+                    }`}
+                    style={{ width: "60%" }}
+                    src={`${assetsCaborDetail}/dropdown.svg`}
+                    alt=""
+                  />
+                </div>
               </div>
-            )}
-          </div>
-        )}
+              {showCategory && (
+                <div
+                  className="absolute w-full bg-white rounded-b-3xl mt-3 pb-3"
+                  style={{ boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                >
+                  {caborData.length &&
+                    caborData.map((data) => (
+                      <p
+                        key={data.category}
+                        className="px-6 py-3 opacity-50 cursor-pointer"
+                        onClick={() => selectCategoryHandler(data.category)}
+                      >
+                        {data.category}
+                      </p>
+                    ))}
+                </div>
+              )}
+            </div>
+          )}
+          <Hasil id={id} />
+        </div>
         <div className="self-center w-full font-sansPro">
           {schedule.map((data, index) => (
             <Card key={index} data={data} />
