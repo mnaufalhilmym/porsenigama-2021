@@ -161,12 +161,10 @@ const CaborDetail = (props) => {
       <div className="flex flex-col justify-center md:px-20 pt-8">
         <div className='flex flex-row items-center justify-between'>
           {selectedCategory && (
-            <div
-              className={`z-10 relative bg-white sm:min-w-max sm:w-1/3 ${
-                showCategory
+            <><div
+              className={`z-10 relative bg-white sm:min-w-max sm:w-1/3 ${showCategory
                   ? "rounded-t-3xl"
-                  : "bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-3xl"
-              } py-3 lg:text-xl xl:text-2xl`}
+                  : "bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-3xl"} py-3 lg:text-xl xl:text-2xl`}
               style={{
                 boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)",
               }}
@@ -178,13 +176,10 @@ const CaborDetail = (props) => {
                 <p className="px-6 py-3 opacity-50">{selectedCategory}</p>
                 <div className="flex justify-center px-4 border-l border-black border-opacity-60">
                   <img
-                    className={`py-3 ${
-                      showCategory ? "transition transform rotate-180" : ""
-                    }`}
+                    className={`py-3 ${showCategory ? "transition transform rotate-180" : ""}`}
                     style={{ width: "60%" }}
                     src={`${assetsCaborDetail}/dropdown.svg`}
-                    alt=""
-                  />
+                    alt="" />
                 </div>
               </div>
               {showCategory && (
@@ -204,9 +199,8 @@ const CaborDetail = (props) => {
                     ))}
                 </div>
               )}
-            </div>
+            </div><Hasil id={id} /></>
           )}
-          <Hasil id={id} />
         </div>
         <div className="self-center w-full font-sansPro">
           {schedule.map((data, index) => (

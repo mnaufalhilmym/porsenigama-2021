@@ -25,7 +25,7 @@ const Hasil = (props) => {
             <p className = 'text-center font-sansPro'>
               <button onClick={() => setVisiblePopup(!visiblePopup)} 
                 className='rounded-xl p-2 border-2 bg-biru text-white text-2xl transform scale-50 md:scale-100 transition duration-300 md:hover:scale-105'
-                >Peraih Medali</button> 
+                >Peraihan Medali</button> 
             </p>
             {visiblePopup ? 
              <div className='fixed top-0 left-0 flex items-center justify-center' style={{
