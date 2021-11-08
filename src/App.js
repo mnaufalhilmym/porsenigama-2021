@@ -1,5 +1,5 @@
 import { Navbar, Footer } from "./Components/Layout";
-import { Home, Standings, News, Faq, Cabor, CaborDetail, Galeri } from "./Pages";
+import { Home, Standings, News, Faq, Cabor, CaborDetail, Galeri, Katalog,KatalogDetail } from "./Pages";
 import { Switch, Route } from "react-router-dom";
 import ScrollIntoView from "./Components/Layout/hooks/ScrollIntoView";
 
@@ -38,7 +38,18 @@ function App() {
             exact
             component={Galeri}
           />
-          <Route path={`${process.env.PUBLIC_URL}/faq`} exact component={Faq} />
+          <Route 
+            path={`${process.env.PUBLIC_URL}/faq`} 
+            exact 
+            component={Faq} />
+          <Route 
+            path={`${process.env.PUBLIC_URL}/katalog`} 
+            exact 
+            component={Katalog} />
+          <Route
+            path={`${process.env.PUBLIC_URL}/katalog/:id`}
+            render={(props) => <KatalogDetail {...props} />}
+          />
         </Switch>
       </ScrollIntoView>
       <Footer />
