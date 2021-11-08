@@ -45,15 +45,21 @@ const Cabor = () => {
           src={`${assetsCabor}/divider.svg`}
           alt=""
         />
-        <div className="flex justify-center w-2/3 my-8 lg:my-14 space-x-3 lg:space-x-24">
-          <button onClick={() => setList(caborList)}>
+        <div className="flex justify-center w-3/4 my-8 lg:my-14 space-x-8 lg:space-x-24">
+          <button
+            className="transform transition-transform transition-300 hover:scale-110"
+            onClick={() => setList(caborList)}
+          >
             <img
-              className="pointer-events-none"
+              className="pointer-events-none transform transition-transform transition-300 hover:scale-110"
               src={`${assetsCabor}/button-olahraga.svg`}
               alt=""
             />
           </button>
-          <button onClick={() => setList(casenList)}>
+          <button
+            className="transform transition-transform transition-300 hover:scale-110"
+            onClick={() => setList(casenList)}
+          >
             <img
               className="pointer-events-none"
               src={`${assetsCabor}/button-seni.svg`}

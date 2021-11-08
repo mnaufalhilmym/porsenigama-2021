@@ -1,8 +1,17 @@
 import { useState, useEffect } from "react";
 import { db } from "../data/db";
+import { Hasil } from '../Components/CaborDetail'
 const assetsCaborDetail = `${process.env.PUBLIC_URL}/images/CaborDetail`;
 
 const Card = (props) => {
+  const data = props.data;
+  if (!data.faculty1) {
+    data.faculty1 = "Error";
+  }
+  if (!data.faculty2) {
+    data.faculty2 = "Error";
+  }
+
   const LogoSupporter = (props) => {
     const [logo, setLogo] = useState(props.logo.toLowerCase());
     return (
@@ -42,8 +51,8 @@ const Card = (props) => {
     <div className="my-7 sm:my-10 lg:my-20">
       <div className="bg-white bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-t-3xl">
         <div className="flex flex-col sm:flex-row items-center justify-between px-8 py-4 lg:text-xl xl:text-2xl">
-          <p className="py-2">{props.data.date}</p>
-          {props.data.isFinished && (
+          <p className="py-2">{data.date}</p>
+          {data.isFinished && (
             <p className="px-10 py-2 rounded-xl bg-birdong text-white">
               Selesai
             </p>
@@ -51,24 +60,22 @@ const Card = (props) => {
         </div>
       </div>
       <div className="flex flex-col sm:flex-row items-center px-2 sm:px-8 py-4 sm:py-12 mt-1 bg-white bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-b-3xl">
-        <LogoSupporter logo={props.data.faculty1.split(" (")[0]} />
+        <LogoSupporter logo={data.faculty1.split(" (")[0]} />
         <div className="flex flex-col items-center w-full sm:flex-1 mx-3 lg:mx-8 xl:space-y-3">
           <div className="flex flex-col sm:flex-row w-full mb-5 sm:mb-0 justify-center items-center">
-            <Player player={props.data.player1} faculty={props.data.faculty1} />
+            <Player player={data.player1} faculty={data.faculty1} />
             <p className="mx-8 my-3 text-xl lg:text-xl xl:text-3xl">VS</p>
-            <Player player={props.data.player2} faculty={props.data.faculty2} />
+            <Player player={data.player2} faculty={data.faculty2} />
           </div>
           <p className="opacity-50 lg:text-xl xl:text-2xl uppercase">
-            {props.data.phase}
+            {data.phase}
           </p>
-          <p className="lg-text-xl xl:text-2xl uppercase">{props.data.venue}</p>
-          {props.data.isFinished && props.data.winner && (
-            <p className="lg-text-xl xl:text-2xl">
-              Pemenang: {props.data.winner}
-            </p>
+          <p className="lg-text-xl xl:text-2xl uppercase">{data.venue}</p>
+          {data.isFinished && data.winner && (
+            <p className="lg-text-xl xl:text-2xl">Pemenang: {data.winner}</p>
           )}
         </div>
-        <LogoSupporter logo={props.data.faculty2.split(" (")[0]} />
+        <LogoSupporter logo={data.faculty2.split(" (")[0]} />
       </div>
     </div>
   );
@@ -83,11 +90,14 @@ const CaborDetail = (props) => {
   const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
+    console.log(id)
+  }, [])
+
+  useEffect(() => {
     const getData = async () => {
       const headerData = (
         await db.collection("dataCabor").doc(id).get()
       ).data();
-      console.log(headerData);
       const querySnapshot = await db
         .collection("dataCabor")
         .doc(id)
@@ -109,12 +119,9 @@ const CaborDetail = (props) => {
     getData();
   }, [id, selectedCategory]);
 
-  const showCategoryHandler = () => {
-    setShowCategory((prevState) => !prevState);
-  };
-
   const selectCategoryHandler = (category) => {
     setSelectedCategory(category);
+    setSchedule([]);
     setShowCategory(false);
   };
 
@@ -152,56 +159,54 @@ const CaborDetail = (props) => {
         alt=""
       />
       <div className="flex flex-col justify-center md:px-20 pt-8">
-        {selectedCategory && (
-          <div
-            className={`z-10 relative bg-white sm:min-w-max sm:w-1/3 ${
-              showCategory
-                ? "rounded-t-3xl"
-                : "bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-3xl"
-            } py-3 lg:text-xl xl:text-2xl`}
-            style={{
-              boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)",
-            }}
-          >
-            <div
-              className="flex justify-between cursor-pointer"
-              onClick={showCategoryHandler}
+        <div className='flex flex-row items-center justify-between'>
+          {selectedCategory && (
+            <><div
+              className={`z-10 relative bg-white sm:min-w-max sm:w-1/3 ${showCategory
+                  ? "rounded-t-3xl"
+                  : "bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-3xl"} py-3 lg:text-xl xl:text-2xl`}
+              style={{
+                boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)",
+              }}
             >
-              <p className="px-6 py-3 opacity-50">{selectedCategory}</p>
-              <div className="flex justify-center px-4 border-l border-black border-opacity-60">
-                <img
-                  className={`py-3 ${
-                    showCategory ? "transition transform rotate-180" : ""
-                  }`}
-                  style={{ width: "60%" }}
-                  src={`${assetsCaborDetail}/dropdown.svg`}
-                  alt=""
-                />
-              </div>
-            </div>
-            {showCategory && (
               <div
-                className="absolute w-full bg-white rounded-b-3xl mt-3 pb-3"
-                style={{ boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                className="flex justify-between cursor-pointer"
+                onClick={() => setShowCategory((prevState) => !prevState)}
               >
-                {caborData.length &&
-                  caborData.map((data) => (
-                    <p
-                      key={data.category}
-                      className="px-6 py-3 opacity-50 cursor-pointer"
-                      onClick={() => selectCategoryHandler(data.category)}
-                    >
-                      {data.category}
-                    </p>
-                  ))}
+                <p className="px-6 py-3 opacity-50">{selectedCategory}</p>
+                <div className="flex justify-center px-4 border-l border-black border-opacity-60">
+                  <img
+                    className={`py-3 ${showCategory ? "transition transform rotate-180" : ""}`}
+                    style={{ width: "60%" }}
+                    src={`${assetsCaborDetail}/dropdown.svg`}
+                    alt="" />
+                </div>
               </div>
-            )}
-          </div>
-        )}
+              {showCategory && (
+                <div
+                  className="absolute w-full bg-white rounded-b-3xl mt-3 pb-3"
+                  style={{ boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                >
+                  {caborData.length &&
+                    caborData.map((data) => (
+                      <p
+                        key={data.category}
+                        className="px-6 py-3 opacity-50 cursor-pointer"
+                        onClick={() => selectCategoryHandler(data.category)}
+                      >
+                        {data.category}
+                      </p>
+                    ))}
+                </div>
+              )}
+            </div><Hasil id={id} /></>
+          )}
+        </div>
         <div className="self-center w-full font-sansPro">
           {schedule.map((data, index) => (
             <Card key={index} data={data} />
           ))}
+          {schedule.length === 0 && <div style={{height: `${caborData.length * 70}px`}}></div>}
         </div>
       </div>
     </div>

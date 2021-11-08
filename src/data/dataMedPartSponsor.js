@@ -30,6 +30,11 @@ const dataSponsor = [
         "lebar" : 72,
     },
     {
+        "name" : "Petrokimia Gresik ",
+        "img" : "sponsor/gresik.png ",
+        "lebar" : 72,
+    },
+    {
         "name" : "Jasa Raharja",
         "img" : "sponsor/JR.png ",
         "lebar" : 96,

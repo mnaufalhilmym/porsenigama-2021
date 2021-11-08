@@ -1,0 +1,1 @@
+export { Hasil } from "./Hasil";

@@ -46,7 +46,7 @@ function openFoto(foto) {
                           className="fixed px-2 py-4 md:top-4 top-32 inset-0 rounded-xl z-20"
                       >
                           <div className="fixed top-0 left-0 bg-gray-900 bg-opacity-70 w-full h-full" onClick={closeFoto} />
-                          <div className="relative md:w-1/2 w-9/10 h-full md:mt-14 mt-20 m-auto">
+                          <div className="relative md:w-1/2 w-9/10 h-full md:mt-14 mt-4 m-auto">
                               {fotoTampil &&
                                   <div className={`m-auto p-1 m-auto relative rounded-xl shadow green-900`}>
                                       <button 
