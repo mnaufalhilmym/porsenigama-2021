@@ -45,7 +45,7 @@ const Navbar = () => {
             <a href={`${process.env.PUBLIC_URL}/`}>Beranda</a>
           </div>
           <div>
-            <a href={`${process.env.PUBLIC_URL}/cabor`}>Cabor</a>
+            <a href={`${process.env.PUBLIC_URL}/cabor`}>Cabang</a>
           </div>
           <div>
             <a href={`${process.env.PUBLIC_URL}/klasemen`}>Klasemen</a>
