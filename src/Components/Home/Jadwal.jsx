@@ -4,7 +4,7 @@ import "./Jadwal.css";
 import Carousel from 'react-elastic-carousel'
 
 
-const box = "gradient-box h-64 w-72 lg:h-72 lg:w-96 bg-krem2 border border-oren2 rounded-3xl relative"
+const box = "gradient-box h-60 w-68 lg:h-72 lg:w-96 bg-krem2 border border-oren2 rounded-3xl relative"
 const cont1 = "bg-gradient-to-r from-krem via-krem3 to-krem3  p-2 bg-krem3 rounded-3xl mx-6 my-4 border-white border"
 const cont2 = "mt-2 h-20 mb-12 grid grid-cols-5 justify-item-center text-center content-center"
 const cont3 = "col-span-2 grid grid-row-2 font-bold justify-item-center"
@@ -38,9 +38,9 @@ const Jadwal = () => {
   }, []); // empty dependencies array => useEffect only called once
 
   return (
-    <div className="grid-cols-9 grid">
+    <div className="w-screen grid-cols-9 grid">
       <button
-        className={"relative item-center w-12 bg-biru h-12 translate-x-1/2 rounded-full button"}
+        className={"transform transition duration-300 md:hover:scale-110 col-span-1 relative lg:w-16 lg:h-16 w-12 h-12 bg-biru -translate-x-1/4 -translate-y-1/2 rounded-full button"}
         onClick={() => posts.carousel.slidePrev()}>
         <img
           src={`${process.env.PUBLIC_URL}/images/Sec6/left-arrow.png`}
@@ -105,7 +105,7 @@ const Jadwal = () => {
         ) : (
           ""
         )}
-      <button className={"relative item-center w-12 bg-biru h-12 translate-x-1/2 rounded-full button"}
+      <button className={"transform transition duration-300 md:hover:scale-110 col-span-1 relative lg:w-16 lg:h-16  w-12 h-12 bg-biru -translate-x-3/4 -translate-y-1/2 rounded-full button"}
         onClick={() => posts.carousel.slideNext()
         }>
         <img

@@ -12,14 +12,14 @@ function BtnSlider({ direction, moveSlide }) {
       >
         <img
           src={direction === "next" ? `${process.env.PUBLIC_URL}/images/Sec5/right-circle.png` : `${process.env.PUBLIC_URL}/images/Sec5/left-circle.png` }
-          className =  "slide-img hidden md:flex transform transition duration-300 md:hover:scale-110"
+          className =  "slide-img transform -translate-y-1/2 transition duration-300 md:hover:scale-110"
           alt =""
         ></img>
-        <img
+        {/* <img
           src= {`${process.env.PUBLIC_URL}/images/Sec5/button-slide.png`}
           className = "slide-img flex md:hidden"
           alt =""
-        ></img>
+        ></img> */}
       </button>
     );
 }

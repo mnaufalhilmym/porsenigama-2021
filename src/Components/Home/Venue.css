@@ -32,22 +32,19 @@
 }
 
 .prev {
-  top: 42vh;
-  left: 5%;
-  transform: translate( 10% );
+  top: 50%;
+  left: 6%;
 }
 .next {
-  top: 42vh;
-  right: 5%;
-  transform: translate( -10% );
+  top: 50%;
+  right: 6%;
 }
 
 @media only screen and (max-width: 767px){
-  .prev , .next{
-    max-width: 2rem;
-    top: 8rem;
-  }
   .slide img{
     border-radius: 60px;
+  }
+  .prev , .next{
+    max-width: 10%;
   }
 }
