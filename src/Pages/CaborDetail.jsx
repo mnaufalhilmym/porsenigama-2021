@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { db } from "../data/db";
-import { Hasil } from '../Components/CaborDetail'
+import { Hasil } from "../Components/CaborDetail";
 const assetsCaborDetail = `${process.env.PUBLIC_URL}/images/CaborDetail`;
 
 const Card = (props) => {
@@ -64,8 +64,12 @@ const Card = (props) => {
         <div className="flex flex-col items-center w-full sm:flex-1 mx-3 lg:mx-8 xl:space-y-3">
           <div className="flex flex-col sm:flex-row w-full mb-5 sm:mb-0 justify-center items-center">
             <Player player={data.player1} faculty={data.faculty1} />
-            <p className="mx-8 my-3 text-xl lg:text-xl xl:text-3xl">VS</p>
-            <Player player={data.player2} faculty={data.faculty2} />
+            {(data.player2 || data.faculty2 !== "Error") && (
+              <>
+                <p className="mx-8 my-3 text-xl lg:text-xl xl:text-3xl">VS</p>
+                <Player player={data.player2} faculty={data.faculty2} />
+              </>
+            )}
           </div>
           <p className="opacity-50 lg:text-xl xl:text-2xl uppercase">
             {data.phase}
@@ -75,7 +79,21 @@ const Card = (props) => {
             <p className="lg-text-xl xl:text-2xl">Pemenang: {data.winner}</p>
           )}
         </div>
-        <LogoSupporter logo={data.faculty2.split(" (")[0]} />
+        {(data.player2 || data.faculty2 !== "Error") && (
+          <LogoSupporter logo={data.faculty2.split(" (")[0]} />
+        )}
+        {!(data.player2 || data.faculty2 !== "Error") && (
+          <div className="w-14 h-14 lg:w-20 lg:h-20 xl:w-28 xl:h-28">
+            {data.score1 && (
+              <div className="w-full h-full flex flex-col items-center justify-center">
+                <p className="lg-text-xl xl:text-2xl">Score:</p>
+                <p className="text-xl lg:text-3xl xl:text-4xl font-semibold">
+                  {data.score1}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -88,10 +106,6 @@ const CaborDetail = (props) => {
   const [showCategory, setShowCategory] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [schedule, setSchedule] = useState([]);
-
-  useEffect(() => {
-    console.log(id)
-  }, [])
 
   useEffect(() => {
     const getData = async () => {
@@ -159,54 +173,64 @@ const CaborDetail = (props) => {
         alt=""
       />
       <div className="flex flex-col justify-center md:px-20 pt-8">
-        <div className='flex flex-row items-center justify-between'>
+        <div className="flex flex-row items-center justify-between">
           {selectedCategory && (
-            <><div
-              className={`z-10 relative bg-white sm:min-w-max sm:w-1/3 ${showCategory
-                  ? "rounded-t-3xl"
-                  : "bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-3xl"} py-3 lg:text-xl xl:text-2xl`}
-              style={{
-                boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)",
-              }}
-            >
+            <>
               <div
-                className="flex justify-between cursor-pointer"
-                onClick={() => setShowCategory((prevState) => !prevState)}
+                className={`z-10 relative bg-white sm:min-w-max sm:w-1/3 ${
+                  showCategory
+                    ? "rounded-t-3xl"
+                    : "bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-3xl"
+                } py-3 lg:text-xl xl:text-2xl`}
+                style={{
+                  boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)",
+                }}
               >
-                <p className="px-6 py-3 opacity-50">{selectedCategory}</p>
-                <div className="flex justify-center px-4 border-l border-black border-opacity-60">
-                  <img
-                    className={`py-3 ${showCategory ? "transition transform rotate-180" : ""}`}
-                    style={{ width: "60%" }}
-                    src={`${assetsCaborDetail}/dropdown.svg`}
-                    alt="" />
-                </div>
-              </div>
-              {showCategory && (
                 <div
-                  className="absolute w-full bg-white rounded-b-3xl mt-3 pb-3"
-                  style={{ boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                  className="flex justify-between cursor-pointer"
+                  onClick={() => setShowCategory((prevState) => !prevState)}
                 >
-                  {caborData.length &&
-                    caborData.map((data) => (
-                      <p
-                        key={data.category}
-                        className="px-6 py-3 opacity-50 cursor-pointer"
-                        onClick={() => selectCategoryHandler(data.category)}
-                      >
-                        {data.category}
-                      </p>
-                    ))}
+                  <p className="px-6 py-3 opacity-50">{selectedCategory}</p>
+                  <div className="flex justify-center px-4 border-l border-black border-opacity-60">
+                    <img
+                      className={`py-3 ${
+                        showCategory ? "transition transform rotate-180" : ""
+                      }`}
+                      style={{ width: "60%" }}
+                      src={`${assetsCaborDetail}/dropdown.svg`}
+                      alt=""
+                    />
+                  </div>
                 </div>
-              )}
-            </div><Hasil id={id} /></>
+                {showCategory && (
+                  <div
+                    className="absolute w-full bg-white rounded-b-3xl mt-3 pb-3"
+                    style={{ boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                  >
+                    {caborData.length &&
+                      caborData.map((data) => (
+                        <p
+                          key={data.category}
+                          className="px-6 py-3 opacity-50 cursor-pointer"
+                          onClick={() => selectCategoryHandler(data.category)}
+                        >
+                          {data.category}
+                        </p>
+                      ))}
+                  </div>
+                )}
+              </div>
+              <Hasil id={id} />
+            </>
           )}
         </div>
         <div className="self-center w-full font-sansPro">
           {schedule.map((data, index) => (
             <Card key={index} data={data} />
           ))}
-          {schedule.length === 0 && <div style={{height: `${caborData.length * 70}px`}}></div>}
+          {schedule.length === 0 && (
+            <div style={{ height: `${caborData.length * 70}px` }}></div>
+          )}
         </div>
       </div>
     </div>
