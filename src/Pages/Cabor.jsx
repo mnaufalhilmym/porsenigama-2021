@@ -13,14 +13,17 @@ const Cabor = () => {
   return (
     <>
       <div className="relative w-full">
-        <img
-          className="-mt-3 pointer-events-none"
-          src={`${assetsCabor}/hero.png`}
-          alt=""
-        />
+        <div
+          className="w-full"
+          style={{
+            backgroundImage: `url(${assetsCabor}/hero.png)`,
+            backgroundSize: "cover",
+            height: width > 1024 ? "100vh" : `${(width * 1042) / 1920}px`,
+          }}
+        ></div>
         {width > 1024 ? (
           <button
-            className={`absolute left-1/2 bottom-24 ${styles.arrowBounce}`}
+            className={`absolute left-1/2 bottom-20 ${styles.arrowBounce}`}
             style={{ maxWidth: "5%" }}
             onClick={() =>
               content.current.scrollIntoView({ behavior: "smooth" })
