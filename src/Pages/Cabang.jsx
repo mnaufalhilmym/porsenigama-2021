@@ -1,14 +1,14 @@
 import { useState, useRef } from "react";
-import styles from "../Components/Home/Cabor.module.css";
+import styles from "../Components/Home/Cabang.module.css";
 
-import { caborList, casenList } from "../data/dataCabor";
+import { caborList, casenList } from "../data/dataCabang";
 
-const Cabor = () => {
+const Cabang = () => {
   const [list, setList] = useState(caborList);
   const content = useRef(null);
   const width = window.innerWidth;
 
-  const assetsCabor = `${process.env.PUBLIC_URL}/images/Cabor`;
+  const assetsCabang = `${process.env.PUBLIC_URL}/images/Cabang`;
 
   return (
     <>
@@ -16,7 +16,7 @@ const Cabor = () => {
         <div
           className="w-full"
           style={{
-            backgroundImage: `url(${assetsCabor}/hero.png)`,
+            backgroundImage: `url(${assetsCabang}/hero.png)`,
             backgroundSize: "cover",
             height: width > 1024 ? "100vh" : `${(width * 1042) / 1920}px`,
           }}
@@ -29,7 +29,7 @@ const Cabor = () => {
               content.current.scrollIntoView({ behavior: "smooth" })
             }
           >
-            <img src={`${assetsCabor}/arrow-bottom.png`} alt="" />
+            <img src={`${assetsCabang}/arrow-bottom.png`} alt="" />
           </button>
         ) : (
           <></>
@@ -38,14 +38,14 @@ const Cabor = () => {
       <div
         className="flex flex-col items-center justify-center"
         style={{
-          backgroundImage: `url(${assetsCabor}/background.png)`,
+          backgroundImage: `url(${assetsCabang}/background.png)`,
         }}
       >
         <img
           ref={content}
           className="mt-8 lg:mt-14 pointer-events-none"
           style={{ width: "12.5%" }}
-          src={`${assetsCabor}/divider.svg`}
+          src={`${assetsCabang}/divider.svg`}
           alt=""
         />
         <div className="flex justify-center w-3/4 my-8 lg:my-14 space-x-8 lg:space-x-24">
@@ -55,7 +55,7 @@ const Cabor = () => {
           >
             <img
               className="pointer-events-none transform transition-transform transition-300 hover:scale-110"
-              src={`${assetsCabor}/button-olahraga.svg`}
+              src={`${assetsCabang}/button-olahraga.svg`}
               alt=""
             />
           </button>
@@ -65,7 +65,7 @@ const Cabor = () => {
           >
             <img
               className="pointer-events-none"
-              src={`${assetsCabor}/button-seni.svg`}
+              src={`${assetsCabang}/button-seni.svg`}
               alt=""
             />
           </button>
@@ -75,12 +75,12 @@ const Cabor = () => {
             <a
               className="w-1/3 transform transition-transform transition-300 hover:scale-110"
               key={item.title}
-              href={`${process.env.PUBLIC_URL}/cabor/${item.title}`}
+              href={`${process.env.PUBLIC_URL}/cabang/${item.title}`}
             >
               <div className="flex flex-col items-center">
                 <img
                   className="pointer-events-none"
-                  src={`${assetsCabor}/gambar-${item.title}.png`}
+                  src={`${assetsCabang}/gambar-${item.title}.png`}
                   alt=""
                 />
                 <p className="font-sansPro md:text-xl text-center">
@@ -93,26 +93,26 @@ const Cabor = () => {
         <img
           className="my-8 lg:my-14 pointer-events-none"
           style={{ width: "12.5%" }}
-          src={`${assetsCabor}/divider.svg`}
+          src={`${assetsCabang}/divider.svg`}
           alt=""
         />
         <div className="z-30 relative w-full">
           <img
             className="z-40 absolute pointer-events-none"
             style={{ left: "5%", width: "15%" }}
-            src={`${assetsCabor}/footer-maskot.png`}
+            src={`${assetsCabang}/footer-maskot.png`}
             alt=""
           />
           <img
             className="absolute pointer-events-none"
             style={{ width: "43%" }}
-            src={`${assetsCabor}/footer-pohon.png`}
+            src={`${assetsCabang}/footer-pohon.png`}
             alt=""
           />
           <img
             className="relative ml-auto pointer-events-none"
             style={{ width: "48%" }}
-            src={`${assetsCabor}/footer-gsp.png`}
+            src={`${assetsCabang}/footer-gsp.png`}
             alt=""
           />
         </div>
@@ -121,4 +121,4 @@ const Cabor = () => {
   );
 };
 
-export { Cabor };
+export { Cabang };

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useEffect, useState } from "react";
 import useScrollListener from "./hooks/useScrollListener.jsx";
@@ -9,7 +8,7 @@ const Navbar = () => {
   const scroll = useScrollListener();
 
   useEffect(() => {
-    setNavYellow(window.location.pathname.includes("/cabor/") ? true : false);
+    setNavYellow(window.location.pathname.includes("/cabang/") ? true : false);
   }, []);
 
   // update classList of nav on scroll
@@ -45,7 +44,7 @@ const Navbar = () => {
             <a href={`${process.env.PUBLIC_URL}/`}>Beranda</a>
           </div>
           <div>
-            <a href={`${process.env.PUBLIC_URL}/cabor`}>Cabang</a>
+            <a href={`${process.env.PUBLIC_URL}/cabang`}>Cabang</a>
           </div>
           <div>
             <a href={`${process.env.PUBLIC_URL}/klasemen`}>Klasemen</a>

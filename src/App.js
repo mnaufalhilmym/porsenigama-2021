@@ -1,5 +1,5 @@
 import { Navbar, Footer } from "./Components/Layout";
-import { Home, Standings, News, Faq, Cabor, CaborDetail, Galeri, Katalog,KatalogDetail } from "./Pages";
+import { Home, Standings, News, Faq, Cabang, CabangDetail, Galeri, Katalog,KatalogDetail } from "./Pages";
 import { Switch, Route } from "react-router-dom";
 import ScrollIntoView from "./Components/Layout/hooks/ScrollIntoView";
 
@@ -20,13 +20,13 @@ function App() {
             component={Standings}
           />
           <Route
-            path={`${process.env.PUBLIC_URL}/cabor`}
+            path={`${process.env.PUBLIC_URL}/cabang`}
             exact
-            component={Cabor}
+            component={Cabang}
           />
           <Route
-            path={`${process.env.PUBLIC_URL}/cabor/:id`}
-            render={(props) => <CaborDetail {...props} />}
+            path={`${process.env.PUBLIC_URL}/cabang/:id`}
+            render={(props) => <CabangDetail {...props} />}
           />
           <Route
             path={`${process.env.PUBLIC_URL}/berita`}

@@ -1,4 +1,4 @@
-import styles from "../Components/Home/Cabor.module.css";
+import styles from "../Components/Home/Cabang.module.css";
 import { useRef } from "react";
 import { supporterList } from "../data/dataKatalog";
 
@@ -7,7 +7,7 @@ const Katalog = () => {
   const content = useRef(null);
   const width = window.innerWidth;
 
-  const assetsCabor = `${process.env.PUBLIC_URL}/images/Cabor`;
+  const assetsCabang = `${process.env.PUBLIC_URL}/images/Cabang`;
   const assetsKatalog = `${process.env.PUBLIC_URL}/images/Katalog`;
   return (
     <>
@@ -25,7 +25,7 @@ const Katalog = () => {
               content.current.scrollIntoView({ behavior: "smooth" })
             }
           >
-            <img src={`${assetsCabor}/arrow-bottom.png`} alt="" />
+            <img src={`${assetsCabang}/arrow-bottom.png`} alt="" />
           </button>
         ) : (
           <></>
