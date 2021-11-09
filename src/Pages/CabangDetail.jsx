@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { db } from "../data/db";
-import { Hasil } from "../Components/CaborDetail";
-const assetsCaborDetail = `${process.env.PUBLIC_URL}/images/CaborDetail`;
+import { Hasil } from "../Components/CabangDetail";
+const assetsCabangDetail = `${process.env.PUBLIC_URL}/images/CabangDetail`;
 
 const Card = (props) => {
   const data = props.data;
@@ -19,7 +19,7 @@ const Card = (props) => {
         <img
           onError={() => setLogo("undefined")}
           className="w-full h-full rounded-full"
-          src={`${assetsCaborDetail}/supporter/${logo}.png`}
+          src={`${assetsCabangDetail}/supporter/${logo}.png`}
           alt=""
         />
       </div>
@@ -99,10 +99,10 @@ const Card = (props) => {
   );
 };
 
-const CaborDetail = (props) => {
+const CabangDetail = (props) => {
   const id = props.match.params.id;
-  const [caborHeader, setCaborHeader] = useState({});
-  const [caborData, setCaborData] = useState([]);
+  const [cabangHeader, setCabangHeader] = useState({});
+  const [cabangData, setCabangData] = useState([]);
   const [showCategory, setShowCategory] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [schedule, setSchedule] = useState([]);
@@ -126,9 +126,9 @@ const CaborDetail = (props) => {
           category = selectedCategory;
         }
         setSchedule(data.filter((item) => item.category === category)[0].data);
-        setCaborData(data);
+        setCabangData(data);
       }
-      setCaborHeader(headerData);
+      setCabangHeader(headerData);
     };
     getData();
   }, [id, selectedCategory]);
@@ -144,11 +144,11 @@ const CaborDetail = (props) => {
       <div className="flex items-center h-full lg:min-h-screen">
         <img
           style={{ width: "3%" }}
-          src={`${assetsCaborDetail}/jpn-${id}.png`}
+          src={`${assetsCabangDetail}/jpn-${id}.png`}
           alt=""
         />
         <div className="relative" style={{ width: "45%" }}>
-          <img src={`${assetsCaborDetail}/circle-biru.svg`} alt="" />
+          <img src={`${assetsCabangDetail}/circle-biru.svg`} alt="" />
           <div
             className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white"
             style={{ width: "70%" }}
@@ -157,19 +157,19 @@ const CaborDetail = (props) => {
               {id}
             </h1>
             <p className="hidden lg:block lg:text-xl">
-              {caborHeader.description}
+              {cabangHeader.description}
             </p>
           </div>
         </div>
         <img
           className="relative ml-auto w-1/2"
-          src={`${assetsCaborDetail}/cover-${id}.png`}
+          src={`${assetsCabangDetail}/cover-${id}.png`}
           alt=""
         />
       </div>
       <img
         className="z-0 absolute w-3/4 right-0"
-        src={`${assetsCaborDetail}/rumah.png`}
+        src={`${assetsCabangDetail}/rumah.png`}
         alt=""
       />
       <div className="flex flex-col justify-center md:px-20 pt-8">
@@ -197,7 +197,7 @@ const CaborDetail = (props) => {
                         showCategory ? "transition transform rotate-180" : ""
                       }`}
                       style={{ width: "60%" }}
-                      src={`${assetsCaborDetail}/dropdown.svg`}
+                      src={`${assetsCabangDetail}/dropdown.svg`}
                       alt=""
                     />
                   </div>
@@ -207,8 +207,8 @@ const CaborDetail = (props) => {
                     className="absolute w-full bg-white rounded-b-3xl mt-3 pb-3"
                     style={{ boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
                   >
-                    {caborData.length &&
-                      caborData.map((data) => (
+                    {cabangData.length &&
+                      cabangData.map((data) => (
                         <p
                           key={data.category}
                           className="px-6 py-3 opacity-50 cursor-pointer"
@@ -229,7 +229,7 @@ const CaborDetail = (props) => {
             <Card key={index} data={data} />
           ))}
           {schedule.length === 0 && (
-            <div style={{ height: `${caborData.length * 70}px` }}></div>
+            <div style={{ height: `${cabangData.length * 70}px` }}></div>
           )}
         </div>
       </div>
@@ -237,4 +237,4 @@ const CaborDetail = (props) => {
   );
 };
 
-export { CaborDetail };
+export { CabangDetail };

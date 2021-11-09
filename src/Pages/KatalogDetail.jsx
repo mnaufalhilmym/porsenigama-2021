@@ -1,9 +1,9 @@
 import { useState, useEffect,useRef } from "react";
 import { db } from "../data/db";
-import styles from "../Components/Home/Cabor.module.css";
+import styles from "../Components/Home/Cabang.module.css";
 
 const assetsKatalog = `${process.env.PUBLIC_URL}/images/Katalog`;
-const assetsCabor = `${process.env.PUBLIC_URL}/images/Cabor`;
+const assetsCabang = `${process.env.PUBLIC_URL}/images/Cabang`;
 
 const KatalogDetail = (props) => {
     const id = props.match.params.id;
@@ -54,7 +54,7 @@ const KatalogDetail = (props) => {
           content.current.scrollIntoView({ behavior: "smooth" })
         }
       >
-        <img src={`${assetsCabor}/arrow-bottom.png`} alt="" />
+        <img src={`${assetsCabang}/arrow-bottom.png`} alt="" />
       </button>
     ) : (
       <></>

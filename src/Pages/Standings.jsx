@@ -1,7 +1,7 @@
 import { db } from "../data/db";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Hasil } from '../Components/CaborDetail'
+import { Hasil } from '../Components/CabangDetail'
 
 const Standings = () => {
   const [standingsData, setStandingsData] = useState([]);
@@ -322,7 +322,7 @@ const Standings = () => {
         {filter !== "0" ? <a
           className="cursor-pointer transform scale-50 md:scale-100 transition duration-300 md:hover:scale-105"
           key={filtercabdetaillib[Number(filter)]}
-          href={`${process.env.PUBLIC_URL}/cabor/${filtercabdetaillib[Number(filter)]}`}
+          href={`${process.env.PUBLIC_URL}/cabang/${filtercabdetaillib[Number(filter)]}`}
         >
           <img src={`${process.env.PUBLIC_URL}/images/Standings/Detail.png`} alt="" />
         </a> : ""}
