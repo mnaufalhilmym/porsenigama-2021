@@ -60,6 +60,11 @@ const dataSponsor = [
         "lebar" : 80,
     },
     {
+        "name" : "PUPR",
+        "img" : "sponsor/pupr.jpg",
+        "lebar" : 80,
+    },
+    {
         "name" : "Jamkrindo",
         "img" : "sponsor/Jamkrindo.jpg",
         "lebar" : 80,
