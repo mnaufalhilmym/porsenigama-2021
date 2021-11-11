@@ -5,7 +5,7 @@ const Title = () => {
         <div className = 'z-30 h-full mt-5 relative md:flex items-center md:items-stretch md:justify-start md:content-end' >
             <div className = 'h-2'></div>
             <div className = 'md:w-45c cursor-default'>
-                <div className = 'flex md:items-stretch justify-center md:ml-28 md:justify-start md:content-end text-5xl md:text-fourteenvh md:mt-32 text-biru font-nuku'> 
+                <div className = 'flex md:items-stretch justify-center md:ml-28 md:justify-start md:content-end text-5xl md:text-fourteenvh md:mt-32 mt-8 text-biru font-nuku'> 
                     <div style = {{
                         "textShadow": [
                             "-1px -1px 0 #F8BF0D",
