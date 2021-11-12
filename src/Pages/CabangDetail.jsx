@@ -134,8 +134,10 @@ const CabangDetail = (props) => {
   }, [id, selectedCategory]);
 
   const selectCategoryHandler = (category) => {
-    setSelectedCategory(category);
-    setSchedule([]);
+    if (selectedCategory !== category) {
+      setSelectedCategory(category);
+      setSchedule([]);
+    }
     setShowCategory(false);
   };
 
