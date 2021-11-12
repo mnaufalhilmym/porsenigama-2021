@@ -224,13 +224,13 @@ const CabangDetail = (props) => {
             </>
           )}
         </div>
-        <div className="self-center w-full font-sansPro">
+        <div
+          className="self-center w-full font-sansPro"
+          style={{ minHeight: `${cabangData.length * 70}px` }}
+        >
           {schedule.map((data, index) => (
             <Card key={index} data={data} />
           ))}
-          {schedule.length === 0 && (
-            <div style={{ height: `${cabangData.length * 70}px` }}></div>
-          )}
         </div>
       </div>
     </div>
