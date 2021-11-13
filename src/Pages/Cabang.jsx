@@ -1,14 +1,13 @@
 import { useState, useRef } from "react";
 import styles from "../Components/Home/Cabang.module.css";
-
 import { caborList, casenList } from "../data/dataCabang";
+
+const assetsCabang = `${process.env.PUBLIC_URL}/images/Cabang`;
 
 const Cabang = () => {
   const [list, setList] = useState(caborList);
   const content = useRef(null);
   const width = window.innerWidth;
-
-  const assetsCabang = `${process.env.PUBLIC_URL}/images/Cabang`;
 
   return (
     <>
@@ -96,9 +95,9 @@ const Cabang = () => {
           src={`${assetsCabang}/divider.svg`}
           alt=""
         />
-        <div className="z-30 relative w-full">
+        <div className="z-10 relative w-full">
           <img
-            className="z-40 absolute pointer-events-none"
+            className="z-10 absolute pointer-events-none"
             style={{ left: "5%", width: "15%" }}
             src={`${assetsCabang}/footer-maskot.png`}
             alt=""
