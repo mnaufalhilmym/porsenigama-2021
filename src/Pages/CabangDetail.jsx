@@ -49,39 +49,24 @@ const Modal = ({ modal, setModal, openModal }) => {
             <FontAwesomeIcon icon={faTimes} />
           </button>
           <div
-            className="h-full p-8 sm:p-12 bg-white rounded-4xl"
+            className="h-full px-4 py-4 lg:p-10 bg-white rounded-4xl"
             style={{
               backgroundImage: `url(${assetsCabang}/background.png)`,
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="h-full flex flex-col items-center px-8 overflow-y-auto">
-              <img
-                className="sm:w-4/5 sm:h-4/5 object-contain"
-                src={modal.src}
-              />
+            <div className="h-full flex flex-col items-center px-3 lg:px-3 overflow-y-auto">
+              <img className="w-full h-full md:w-4/5 lg:h-4/5 object-contain" src={modal.src} />
               <div className="flex flex-col items-center">
                 {modal.title && (
-                  <p className="mt-8 font-bold text-center text-2xl">
-                    {modal.title}
-                  </p>
+                  <p className="mt-8 font-bold text-center text-2xl">{modal.title}</p>
                 )}
                 <div className="my-6 text-center">
                   <p className="font-bold text-xl">{modal.name}</p>
                   <p>{modal.faculty}</p>
                 </div>
-                <p className="text-justify whitespace-pre-line">
-                  {modal.description}
-                </p>
+                <p className="text-justify whitespace-pre-line">{modal.description}</p>
               </div>
-              <button
-                className="mt-8 mx-auto px-8 py-3 bg-krem rounded-4xl font-nuku text-kuning text-xl"
-                onClick={() =>
-                  window.open("https://bit.ly/PengumpulanKaryaFotografi2021")
-                }
-              >
-                Vote
-              </button>
             </div>
           </div>
         </div>
@@ -327,6 +312,17 @@ const Fotografi = ({ openModal }) => {
           </li>
         ))}
       </ul>
+      <button
+        className="my-20 mx-auto px-14 py-6 bg-krem rounded-4xl font-nuku text-kuning text-3xl sm:text-7xl"
+        style={{
+          backgroundImage: `url(${assetsCabang}/background.png)`,
+        }}
+        onClick={() =>
+          window.open("https://bit.ly/PengumpulanKaryaFotografi2021")
+        }
+      >
+        Vote
+      </button>
     </div>
   );
 };
