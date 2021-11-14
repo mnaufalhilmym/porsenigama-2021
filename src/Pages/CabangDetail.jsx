@@ -55,7 +55,7 @@ const Modal = ({ modal, setModal, openModal }) => {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="h-full flex flex-col items-center overflow-y-auto">
+            <div className="h-full flex flex-col items-center px-8 overflow-y-auto">
               <img className="sm:w-4/5 sm:h-4/5 object-contain" src={modal.src} />
               <div className="flex flex-col items-center">
                 {modal.title && (
@@ -65,7 +65,7 @@ const Modal = ({ modal, setModal, openModal }) => {
                   <p className="font-bold text-xl">{modal.name}</p>
                   <p>{modal.faculty}</p>
                 </div>
-                <p className="text-justify">{modal.description}</p>
+                <p className="text-justify whitespace-pre-line">{modal.description}</p>
               </div>
               <button
                 className="mt-8 mx-auto px-8 py-3 bg-krem rounded-4xl font-nuku text-kuning text-xl"
