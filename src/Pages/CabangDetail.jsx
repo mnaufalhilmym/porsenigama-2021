@@ -25,7 +25,7 @@ const Modal = ({ modal, setModal, openModal }) => {
   const Button = ({ arrow }) => {
     return (
       <button
-        className="flex-shrink-0 w-8"
+        className="hidden sm:block flex-shrink-0 w-8"
         onClick={(e) =>
           changeImage(e, arrow === "left" ? modal.id - 1 : modal.id + 1)
         }
@@ -39,27 +39,27 @@ const Modal = ({ modal, setModal, openModal }) => {
 
   return (
     <div
-      className="z-50 fixed flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-70 transition-opacity"
+      className="z-50 fixed flex items-center justify-center w-full h-full pt-11 px-8 bg-gray-900 bg-opacity-70 transition-opacity"
       onClick={() => setModal(false)}
     >
-      <div className="flex gap-4 w-3/4 h-3/4">
+      <div className="flex gap-4 lg:w-3/4 h-3/4">
         <Button arrow="left" />
         <div className="flex flex-col flex-shrink w-full h-full">
-          <button className="self-end absolute transform -translate-y-full translate-x-2/3 md:text-4xl text-6xl text-white bg-kuning px-2 rounded-full  z-50">
+          <button className="self-end absolute transform -translate-y-full translate-x-2/3 sm:text-2xl md:text-4xl text-white bg-kuning px-2 rounded-full  z-50">
             <FontAwesomeIcon icon={faTimes} />
           </button>
           <div
-            className="h-full p-12 bg-white rounded-4xl"
+            className="h-full p-8 sm:p-12 bg-white rounded-4xl"
             style={{
               backgroundImage: `url(${assetsCabang}/background.png)`,
             }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="h-full flex flex-col items-center overflow-y-auto">
-              <img className="w-4/5 h-4/5 object-contain" src={modal.src} />
+              <img className="sm:w-4/5 sm:h-4/5 object-contain" src={modal.src} />
               <div className="flex flex-col items-center">
                 {modal.title && (
-                  <p className="mt-8 font-bold text-2xl">{modal.title}</p>
+                  <p className="mt-8 font-bold text-center text-2xl">{modal.title}</p>
                 )}
                 <div className="my-6 text-center">
                   <p className="font-bold text-xl">{modal.name}</p>
@@ -300,18 +300,19 @@ const NonFotografi = ({
 const Fotografi = ({ openModal }) => {
   return (
     <div className="flex flex-col justify-center">
-      <h2 className="my-32 mx-auto font-nuku text-8xl text-white">
+      <h2 className="my-20 lg:my-32 mx-auto font-nuku text-center text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white">
         Hasil Karya
       </h2>
       <ul className="flex flex-wrap gap-2">
         {dataFotografi.map((data, id) => (
-          <li className="flex-grow h-64">
+          <li className="flex-grow sm:h-64">
             <button
               className="w-full h-full"
               key={id + 1}
               onClick={() => openModal(id)}
             >
               <img
+                loading="lazy"
                 className="min-w-full max-h-full object-cover"
                 src={`${assetsCabangDetail}/fotografi/${id + 1}.jpg`}
               ></img>
@@ -320,7 +321,7 @@ const Fotografi = ({ openModal }) => {
         ))}
       </ul>
       <button
-        className="my-20 mx-auto px-14 py-6 bg-krem rounded-4xl font-nuku text-kuning text-7xl"
+        className="my-20 mx-auto px-14 py-6 bg-krem rounded-4xl font-nuku text-kuning text-3xl sm:text-7xl"
         style={{
           backgroundImage: `url(${assetsCabang}/background.png)`,
         }}
@@ -370,7 +371,6 @@ const CabangDetail = (props) => {
   }, [id, selectedCategory]);
 
   const openModal = (id) => {
-    console.log(id);
     setModal({
       id: id,
       src: `${assetsCabangDetail}/fotografi/${id + 1}.jpg`,
