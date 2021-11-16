@@ -33,12 +33,12 @@ const Hasil = (props) => {
                 width: '100vw',
                 backgroundColor: 'rgba(0,0,0,0.2)'
                 }} >
-                <div className='bg-white border-2 border-ungugaje min-h-24 font-sansPro rounded-4xl w-5/6'
+                <div className='bg-white border-2 border-ungugaje min-h-24 font-sansPro rounded-4xl w-5/6 md:pr-10'
                 style={{'backgroundImage': `url('${process.env.PUBLIC_URL}/images/News/Group 51.png')`}}>
                     <div className='flex justify-end'>
                         <button 
                             onClick={() => setVisiblePopup(!visiblePopup)} 
-                            className='mx-4 my-4 bg-merah text-kuning text-2xl rounded-xl px-8 py-2 font-nuku transform scale-50 md:scale-100 transition duration-300 md:hover:scale-105'
+                            className='md:mx-4 my-4 bg-merah text-kuning text-3xl md:text-2xl rounded-xl px-8 py-2 font-nuku transform scale-50 md:scale-100 transition duration-300 md:hover:scale-105'
                             style={{
                                 textShadow: [
                                     "1.5px 1.5px 0 #000",
@@ -49,10 +49,10 @@ const Hasil = (props) => {
                             }}>Tutup
                         </button>
                     </div>
-                    <div className='mx-4 my-4 grid grid-flow-col font-sansPro text-black text-threevh font-semibold'>
+                    <div className='mx-4 my-4 grid grid-flow-col auto-cols-max overflow-x-scroll font-sansPro text-black text-base md:text-2xl font-semibold'>
                         {standingsRef.map((cabang, index) => (
                             <div className='p-4 border-2 border-ungugaje bg-krem m-2 rounded-xl'>
-                                <p className='text-fivevh uppercase font-bold text-kuning'                             
+                                <p className='text-2xl md:text-fivevh uppercase font-bold text-kuning'                             
                                     style={{
                                     textShadow: [
                                         "1.5px 1.5px 0 #000",
@@ -64,18 +64,18 @@ const Hasil = (props) => {
                                 <p className='flex'><img
                                     src={`${process.env.PUBLIC_URL}/images/Standings/Mendali gold.png`}
                                     alt="Tabel perolehan medali emas"
-                                    className="transform md:w-10 md:h-11"
+                                    className="transform w-5 h-6 md:w-10 md:h-11"
                                     />{cabang.gold}</p>
                                 <p className='flex'>
                                     <img
                                     src={`${process.env.PUBLIC_URL}/images/Standings/Mendali silver.png`}
                                     alt="Tabel perolehan medali emas"
-                                    className="transform md:w-10 md:h-11"
+                                    className="transform w-5 h-6 md:w-10 md:h-11"
                                     />{cabang.silver}</p>
                                 <p className='flex'><img
                                     src={`${process.env.PUBLIC_URL}/images/Standings/Mendali bronze.png`}
                                     alt="Tabel perolehan medali emas"
-                                    className="transform md:w-10 md:h-11"
+                                    className="transform w-5 h-6 md:w-10 md:h-11"
                                     />{cabang.bronze}</p>
                             </div>
                         ))}

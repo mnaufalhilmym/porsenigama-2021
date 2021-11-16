@@ -96,13 +96,13 @@ const Standings = () => {
       />
       <div className="h-4 md:hidden"></div>
       <div
-        className="hidden md:flex"
+        className="hidden lg:flex"
         style={{
           height: "50vh",
         }}
       ></div>
       <h1
-        className="font-bold pt-24 text-center text-5xl md:text-fourteenvh tracking-wider relative text-biru"
+        className="font-bold pt-24 text-center text-5xl md:text-7xl lg:text-fourteenvh tracking-wider relative text-biru"
         style={{
           textShadow: [
             "-1px -1px 0 #FBE5D2",
@@ -177,7 +177,7 @@ const Standings = () => {
         </select>
       </div>
       <div className="w-full flex justify-center my-12 text-center relative">
-        <table className="text-xs md:text-fivevh mx-12 md:table-fixed md:w-full">
+        <table className="text-sm md:text-fivevh mx-12 md:table-fixed md:w-full">
           <thead>
             <tr>
               <th
@@ -218,7 +218,7 @@ const Standings = () => {
                 />
               </th>
               <th
-                className="px-6 border-3 border-ungugaje"
+                className="lg:px-6 border-3 border-ungugaje text-lg lg:text-fivevh"
                 style={{ "borderTop": "none" }}
               >
                 total
