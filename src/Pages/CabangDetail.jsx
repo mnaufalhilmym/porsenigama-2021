@@ -4,7 +4,6 @@ import { dataFotografi } from "../data/dataFotografi";
 import { dataVocalGroup } from "../data/dataVocalGroup";
 import {
   Common,
-  Hasil,
   Fotografi,
   Modal,
   VocalGroup,
@@ -110,7 +109,6 @@ const CabangDetail = (props) => {
       )}
       <div className="pt-14 lg:pt-0 relative bg-merah min-w-full px-5 overflow-hidden">
         <Header id={id} cabangHeader={cabangHeader} />
-        <Hasil id={id} />
         {id !== "Fotografi" && id !== "Vocal Group" && selectedCategory && (
           <Common
             id={id}
@@ -123,8 +121,8 @@ const CabangDetail = (props) => {
             setSchedule={setSchedule}
           />
         )}
-        {id === "Fotografi" && <Fotografi openModal={openModal} />}
-        {id === "Vocal Group" && <VocalGroup openModal={openModal} />}
+        {id === "Fotografi" && <Fotografi id={id} openModal={openModal} />}
+        {id === "Vocal Group" && <VocalGroup id={id} openModal={openModal} />}
       </div>
     </>
   );
