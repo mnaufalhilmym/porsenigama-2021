@@ -9,7 +9,7 @@ const VocalGroup = ({ openModal }) => {
       <h2 className="my-20 lg:my-32 mx-auto font-nuku text-center text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white">
         Hasil Karya
       </h2>
-      <ul className="grid grid-cols-4 gap-10 mx-auto">
+      <ul className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 lg:gap-10 px-5 lg:px-10 mx-auto">
         {dataVocalGroup.map((data, index) => (
           <li key={data.id}>
             <button className="p-4 border border-biru bg-biru rounded-2xl" onClick={() => openModal(index)}>
