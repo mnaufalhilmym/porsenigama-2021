@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Hasil } from "./Hasil";
+
 const assetsCabangDetail = `${process.env.PUBLIC_URL}/images/CabangDetail`;
 
 const Card = (props) => {
@@ -168,6 +170,7 @@ const Common = ({
               </div>
             )}
           </div>
+          <Hasil id={id} />
         </div>
         <ul
           className="self-center w-full font-sansPro"
