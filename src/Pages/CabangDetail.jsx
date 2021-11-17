@@ -274,7 +274,6 @@ const NonFotografi = ({
               </div>
             )}
           </div>
-          <Hasil id={id} />
         </div>
         <div
           className="self-center w-full font-sansPro"
@@ -380,6 +379,7 @@ const CabangDetail = (props) => {
       )}
       <div className="pt-14 lg:pt-0 relative bg-merah min-w-full px-5 overflow-hidden">
         <Header id={id} cabangHeader={cabangHeader} />
+        <Hasil id={id} />
         {id !== "Fotografi" && selectedCategory && (
           <NonFotografi
             id={id}
