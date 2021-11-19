@@ -99,6 +99,8 @@ const CabangDetail = (props) => {
           vidSrc: dataVocalGroup[index].url,
         });
         break;
+      default:
+        return;
     }
   };
 
