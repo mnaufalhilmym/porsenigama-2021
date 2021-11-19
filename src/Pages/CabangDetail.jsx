@@ -115,9 +115,7 @@ const CabangDetail = (props) => {
         {id !== "Fotografi" && id !== "Vocal Group" && (
           <>
             {!selectedCategory && (
-              <div className="mb-20">
-                <Hasil id={id} />
-              </div>
+              <Hasil id={id} />
             )}
             {selectedCategory && (
               <Common

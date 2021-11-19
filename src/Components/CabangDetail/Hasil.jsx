@@ -26,7 +26,7 @@ const Hasil = (props) => {
   return (
     <>
       {standingsRef.length > 0 && (
-        <div className="relative z-50">
+        <div className="relative z-50 pb-8">
           <p className="text-center font-sansPro">
             <button
               onClick={() => setVisiblePopup(!visiblePopup)}
