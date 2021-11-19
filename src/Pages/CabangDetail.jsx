@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { db } from "../data/db";
 import { dataFotografi } from "../data/dataFotografi";
 import { dataVocalGroup } from "../data/dataVocalGroup";
+import { Hasil } from "../Components/CabangDetail/Hasil";
 import {
   Common,
   Fotografi,
@@ -111,17 +112,26 @@ const CabangDetail = (props) => {
       )}
       <div className="pt-14 lg:pt-0 relative bg-merah min-w-full px-5 overflow-hidden">
         <Header id={id} cabangHeader={cabangHeader} />
-        {id !== "Fotografi" && id !== "Vocal Group" && selectedCategory && (
-          <Common
-            id={id}
-            cabangData={cabangData}
-            showCategory={showCategory}
-            setShowCategory={setShowCategory}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-            schedule={schedule}
-            setSchedule={setSchedule}
-          />
+        {id !== "Fotografi" && id !== "Vocal Group" && (
+          <>
+            {!selectedCategory && (
+              <div className="mb-20">
+                <Hasil id={id} />
+              </div>
+            )}
+            {selectedCategory && (
+              <Common
+                id={id}
+                cabangData={cabangData}
+                showCategory={showCategory}
+                setShowCategory={setShowCategory}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+                schedule={schedule}
+                setSchedule={setSchedule}
+              />
+            )}
+          </>
         )}
         {id === "Fotografi" && <Fotografi id={id} openModal={openModal} />}
         {id === "Vocal Group" && <VocalGroup id={id} openModal={openModal} />}
