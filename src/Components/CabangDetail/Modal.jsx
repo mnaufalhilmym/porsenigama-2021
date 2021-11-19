@@ -24,6 +24,8 @@ const Modal = ({ modal, setModal, openModal }) => {
         return dataFotografi;
       case "Vocal Group":
         return dataVocalGroup;
+      default:
+        return;
     }
   };
 
@@ -34,6 +36,7 @@ const Modal = ({ modal, setModal, openModal }) => {
       id = dataArray().length - 1;
     }
     openModal(id);
+    setPlay(true);
   };
 
   const btnClickHandler = (e, id) => {
@@ -55,6 +58,8 @@ const Modal = ({ modal, setModal, openModal }) => {
       case "Space":
         setPlay((state) => !state);
         break;
+      default:
+        return;
     }
   };
 
@@ -135,6 +140,11 @@ const Modal = ({ modal, setModal, openModal }) => {
                   <ReactPlayer
                     width="100%"
                     height="100%"
+                    config={{
+                      youtube: {
+                        playerVars: { controls: 1 },
+                      },
+                    }}
                     url={modal.vidSrc}
                     playing={play}
                   />
