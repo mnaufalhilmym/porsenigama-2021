@@ -18,11 +18,6 @@ const Hasil = (props) => {
       });
   }, [filter]);
 
-  // useEffect(() => {
-  // // let toprint = standingsData[0]
-  //     console.log(standingsRef);
-  // }, [standingsRef])
-
   return (
     <>
       {standingsRef.length > 0 && (

@@ -11,7 +11,6 @@ const KatalogDetail = (props) => {
   const [toggleState, setToggleState] = useState(0);
   const toggleTab = (index) => {
     setToggleState(index);
-    console.log(index);
   };
   const [Katalog, setKatalog] = useState({});
   useEffect(() => {
@@ -19,7 +18,6 @@ const KatalogDetail = (props) => {
       const headerData = (
         await db.collection("dataKatalog").doc(id).get()
       ).data();
-      console.log(headerData);
       setKatalog(headerData);
       setstate(headerData);
     };

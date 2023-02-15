@@ -16,21 +16,21 @@ const Carousel1 = () => {
   const [images, setImages] = useState([])
   const [content, setContent] = useState([])
   const [link, setLink] = useState([])
-  
+
   useEffect(() => {
     const articlesData = db.collection("berita").orderBy("link").onSnapshot((snap) => {
       let data = snap.docs.map((doc) => doc.data());
       setDataBerita(data);
       setLoad('1');
-      return articlesData();     
+      return articlesData();
     });
   }, []);
 
   useEffect(() => {
-    const titledata = dataBerita.map(x=>x.title)
-    const previewdata = dataBerita.map(x=>x.preview)
-    const linkdata = dataBerita.map(x=>x.link)
-    const imagedata = dataBerita.map(x=>x.images)
+    const titledata = dataBerita.map(x => x.title)
+    const previewdata = dataBerita.map(x => x.preview)
+    const linkdata = dataBerita.map(x => x.link)
+    const imagedata = dataBerita.map(x => x.images)
     setImages(imagedata)
     setLink(linkdata)
     setCurrentLink(linkdata[0])
@@ -115,47 +115,43 @@ const Carousel1 = () => {
       style={{ top: '40%' }}
     >
       <span role="img" aria-label={`Arrow ${isLeft ? 'left' : 'right'}`}>
-        <img src={`${isLeft ? `${process.env.PUBLIC_URL}/images/Sec1/Kiri.svg` : `${process.env.PUBLIC_URL}/images/Sec1/Kanan.svg`}`} alt={`${isLeft ? 'Berita Kiri' : 'Berita Kanan'}`} /> 
+        <img src={`${isLeft ? `${process.env.PUBLIC_URL}/images/Sec1/Kiri.svg` : `${process.env.PUBLIC_URL}/images/Sec1/Kanan.svg`}`} alt={`${isLeft ? 'Berita Kiri' : 'Berita Kanan'}`} />
       </span>
     </button>
   );
-  
+
   const history = useHistory();
 
   const readMore = () => {
-    history.push(`${process.env.PUBLIC_URL}/berita`, { newsNo : currentLink });
+    history.push(`${process.env.PUBLIC_URL}/berita`, { newsNo: currentLink });
   };
 
-  useEffect(() => {
-    console.log(load)
-  }, [load])
-
-  return (
-  // Images are placed using inline flex. We then wrap an image in a div
-  // with flex-shrink-0 to stop it from 'shrinking' to fit the outer div.
-  // Finally the image itself will be 100% of a parent div. Outer div is
-  // set with position relative, so we can place our cotrol buttons using
-  // absolute positioning on each side of the image.
+  return dataBerita.length > 0 ? (
+    // Images are placed using inline flex. We then wrap an image in a div
+    // with flex-shrink-0 to stop it from 'shrinking' to fit the outer div.
+    // Finally the image itself will be 100% of a parent div. Outer div is
+    // set with position relative, so we can place our cotrol buttons using
+    // absolute positioning on each side of the image.
     <div className="p-0 mt-8 md:p-12 flex justify-center w-3/4 md:w-3/4 items-center">
       <div className="relative w-full">
         <div className="carousel shadow-csel1">
-        {(() => {
+          {(() => {
             if (load === '0') {
               return (
-                <div className = 'h-1/4x'></div>
+                <div className='h-1/4x'></div>
               )
             } else {
               return (
                 <>
-                {sliderControl(true)}
-                {dataBerita.map((berita, i) => (
-                  <>
-                  <div className="w-full flex-shrink-0" key={berita.link} ref={refs[i]}>
-                    <img src={berita.images} className="w-full object-contain" alt="" />
-                  </div>
-                  </>        
-                ))}
-                <div className='w-full h-full flex justify-end absolute items-center'>
+                  {sliderControl(true)}
+                  {dataBerita.map((berita, i) => (
+                    <>
+                      <div className="w-full flex-shrink-0" key={berita.link} ref={refs[i]}>
+                        <img src={berita.images} className="w-full object-contain" alt="" />
+                      </div>
+                    </>
+                  ))}
+                  <div className='w-full h-full flex justify-end absolute items-center'>
                     <div id='textBerita' className='w-1/3 text-white text-right mr-3 md:mr-8 cursor-default flex-shrink-0'>
                       <div className='w-full font-sans font-bold text-md md:text-4xl md:mt-12 object-contain'>
                         {currentTitle}
@@ -170,7 +166,7 @@ const Carousel1 = () => {
                       </button>
                     </div>
                   </div>
-                {sliderControl()}
+                  {sliderControl()}
                 </>
               )
             }
@@ -178,7 +174,7 @@ const Carousel1 = () => {
         </div>
       </div>
     </div>
-  );
+  ) : <></>;
 };
 
 export default Carousel1

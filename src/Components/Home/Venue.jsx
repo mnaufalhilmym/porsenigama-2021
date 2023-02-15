@@ -3,7 +3,6 @@ import './Venue.css'
 
 // Ini fungsi tombol slidernya 
 function BtnSlider({ direction, moveSlide }) {
-    // console.log(direction, moveSlide);
     const btn = "" ;
     return (
       <button

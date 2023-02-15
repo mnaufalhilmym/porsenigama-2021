@@ -18,7 +18,6 @@ const Galeri = () => {
 function openFoto(foto) {
     setFotoTampil(foto)
     setIsTampil(true)
-    console.log(isTampil, fotoTampil)
 }
   return (
     <div className="bg-birdong">

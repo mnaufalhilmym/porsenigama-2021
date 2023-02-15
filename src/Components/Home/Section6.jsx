@@ -21,7 +21,6 @@ const Section6 = () => {
           }
         });
         setAcara(getAcaraFromFirebase);
-        console.log(Acara);
       });
 
     // return cleanup function

@@ -51,10 +51,6 @@ const News = () => {
         return titledata, fimagedata, c1data, c2data, c3data, c4data
     }, [dataBerita])
 
-    useEffect(() => {
-        console.log(dataBerita)
-    }, [dataBerita])
-
     return (
         <>
         <div className='text-3xl md:text-eitvh font-nuku bg-oren md:ml-24 pb-3 md:pb-6 pt-16 md:pt-28 text-white rounded-b-3xl text-center absolute w-full md:w-1/3 cursor-default'>
